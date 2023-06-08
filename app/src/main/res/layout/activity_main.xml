@@ -28,7 +28,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/btnThithu"
+            android:id="@+id/btnThiThu"
             android:layout_width="95dp"
             android:layout_height="95dp"
             android:layout_marginLeft="30dp"
@@ -55,7 +55,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/btnHocBienBao"
+            android:id="@+id/btnCauTruc"
             android:layout_width="95dp"
             android:layout_height="95dp"
             android:layout_marginLeft="30dp"
@@ -83,7 +83,7 @@
         android:paddingBottom="5dp">
 
         <ImageButton
-            android:id="@+id/btnThuchanh"
+            android:id="@+id/btnMeo"
             android:layout_width="95dp"
             android:layout_height="95dp"
             android:layout_marginLeft="30dp"
