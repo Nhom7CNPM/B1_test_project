@@ -1,18 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:gravity="center"
+    android:background="@drawable/mainbg"
+    android:orientation="vertical"
+    tools:context="MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:drawablePadding="10dp"
+        android:text="Ôn thi Tiếng Anh đầu ra"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:layout_marginTop="105dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btnThithu"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/exam" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:drawablePadding="10dp"
+            android:text="Làm thử đề"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="122dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btnHocBienBao"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/puzzle" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:drawablePadding="10dp"
+            android:text="Cấu trúc đề thi"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="154dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="5dp">
+
+        <ImageButton
+            android:id="@+id/btnThuchanh"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/idead" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:drawablePadding="10dp"
+            android:text="Mẹo làm bài="
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Các phần tử khác trong FrameLayout -->
+
+        <!-- LinearLayout được đặt ở cuối trang -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <!-- Button ở bên trái -->
+            <Button
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Trang chủ"
+                android:id="@+id/homebtn"
+                android:textColor="@color/white"
+                android:padding="15dp"
+                android:textSize="15sp"/>
+
+            <!-- Các phần tử trong LinearLayout -->
+
+            <!-- Button ở bên phải -->
+            <Button
+                android:layout_width="205dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:text="Tài khoản"
+                android:id="@+id/myaccountbtn"
+                android:textColor="@color/white"
+                android:padding="15dp"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
