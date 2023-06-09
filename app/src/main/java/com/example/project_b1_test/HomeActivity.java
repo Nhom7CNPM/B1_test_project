@@ -22,11 +22,11 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this,StartTestActivity.class));
             }
         });
-        test2butn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,StartTest2Activity.class));
-            }
-        });
+//        test2butn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(HomeActivity.this,StartTest2Activity.class));
+//            }
+//        });
     }
 }
