@@ -1,5 +1,6 @@
 package com.example.project_b1_test;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,41 +20,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.example.project_b1_test.db.QandA1;
+
     public class Test1Activity extends AppCompatActivity implements View.OnClickListener {
         TextView totalQuestiontextview;
         TextView questiontextview;
-        Button ansA,ansB,ansC;
-        //    Button ansD;
+        Button ansA,ansB,ansC,ansD;
         Button submit;
-        int score =0;
-        int totalquestion=Answerthequestion.question.length;
-    int curruentQuestionIndex=0;
-    String selectedAnswer="";
+        int score = 0;
+        int totalquestion = QandA1.Question.length;
+    int curruentQuestionIndex = 0;
+    String selectedAnswer = "";
     private CountDownTimer countDownTimer;
     TextView textView;
     ArrayList<String> selectedAnswersList;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test1);
 
-        totalQuestiontextview=(TextView) findViewById(R.id.Total_question);
-        questiontextview=(TextView) findViewById(R.id.questions);
-        ansA=(Button) findViewById(R.id.ans_A);
-        ansB=(Button) findViewById(R.id.ans_B);
-        ansC=(Button) findViewById(R.id.ans_C);
-//        ansD=(Button) findViewById(R.id.ans_D);
+        totalQuestiontextview = (TextView) findViewById(R.id.Total_question);
+        questiontextview = (TextView) findViewById(R.id.questions);
+        ansA = (Button) findViewById(R.id.ans_A);
+        ansB = (Button) findViewById(R.id.ans_B);
+        ansC = (Button) findViewById(R.id.ans_C);
+        ansD = (Button) findViewById(R.id.ans_D);
 
-        submit=(Button) findViewById(R.id.submit);
+        submit = (Button) findViewById(R.id.submit);
 
         ansA.setOnClickListener(this);
         ansB.setOnClickListener(this);
         ansC.setOnClickListener(this);
-//        ansD.setOnClickListener(this);
+        ansD.setOnClickListener(this);
         submit.setOnClickListener(this);
 
-        totalQuestiontextview.setText("Câu hỏi: "+totalquestion);
+        totalQuestiontextview.setText("Câu hỏi: " + totalquestion);
         loadNewQuestion();
 
         textView=(TextView) findViewById(R.id.time);
@@ -68,7 +71,7 @@ import java.util.Arrays;
         ansA.setBackgroundColor(Color.WHITE);
         ansB.setBackgroundColor(Color.WHITE);
         ansC.setBackgroundColor(Color.WHITE);
-//        ansD.setBackgroundColor(Color.WHITE);
+        ansD.setBackgroundColor(Color.WHITE);
 
         Button clickedButton = (Button) view;
         if(clickedButton.getId()==R.id.submit){
@@ -96,10 +99,10 @@ import java.util.Arrays;
         ansA.setText(Answerthequestion.choise[curruentQuestionIndex][0]);
         ansB.setText(Answerthequestion.choise[curruentQuestionIndex][1]);
         ansC.setText(Answerthequestion.choise[curruentQuestionIndex][2]);
-//        ansD.setText(Answerthequestion.choise[curruentQuestionIndex][3]);
+        ansD.setText(Answerthequestion.choise[curruentQuestionIndex][3]);
     }
     void finishQuiz() {
-        String passstatus ="";
+        String passstatus = "";
         if (score > 60) {
             passstatus = "Bạn đã thi đỗ";
         } else {

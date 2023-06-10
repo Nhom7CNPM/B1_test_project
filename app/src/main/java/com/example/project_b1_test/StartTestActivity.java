@@ -38,9 +38,8 @@ public class StartTestActivity extends AppCompatActivity {
         starttestbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(StartTestActivity.this,Test1Activity.class);
+                Intent intent= new Intent(getApplicationContext(), Test1Activity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
