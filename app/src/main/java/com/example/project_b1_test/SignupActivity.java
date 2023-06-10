@@ -1,10 +1,12 @@
 package com.example.project_b1_test;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -14,11 +16,13 @@ import com.example.project_b1_test.db.Database;
 
 public class SignupActivity extends AppCompatActivity{
 
+    TextView BackSignIn;
     private EditText SignUpEmail, SignUpPass, ConfirmPass;
     private Button SignUpButton;
     Database MyDB;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,7 @@ public class SignupActivity extends AppCompatActivity{
         ConfirmPass = findViewById(R.id.confirmpassword);
 
         SignUpButton = findViewById(R.id.signupbtn);
+        BackSignIn = findViewById(R.id.backsignin);
 
         MyDB = new Database(this);
 
@@ -48,8 +53,8 @@ public class SignupActivity extends AppCompatActivity{
                     if(pass.equals(cpass))
                     {
                         // Kiểm tra email đăng kí đã có trong DB chưa
-                        Boolean emailcheckresult = MyDB.checkemail(email);
-                        if(emailcheckresult == false)
+                        Boolean emailcheck = MyDB.checkemail(email);
+                        if(emailcheck == false)
                         {
                             //Nếu chưa thì nhập tài khoản vào DB
                             Boolean regresult = MyDB.insertData(email,pass);
@@ -74,6 +79,14 @@ public class SignupActivity extends AppCompatActivity{
                         Toast.makeText(SignupActivity.this, "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        BackSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

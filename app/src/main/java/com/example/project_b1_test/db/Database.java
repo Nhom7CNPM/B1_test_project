@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
 
-    public static final String DBNAME = "Account.db";
+    public static final String DBNAME = "account.db";
 
     public Database(Context context) {
-        super(context, "Account.db", null,1);
+        super(context, "account.db", null,1);
     }
 
     @Override
@@ -26,10 +26,12 @@ public class Database extends SQLiteOpenHelper {
 
     public Boolean insertData(String email, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("signupemail",email);
-        contentValues.put("signuppass",password);
-        long result = MyDB.insert("emails",null,contentValues);
+        ContentValues values = new ContentValues();
+
+        values.put("signupemail",email);
+        values.put("signuppass",password);
+
+        long result = MyDB.insert("emails",null, values);
         if(result == -1)
         {
             return false;
@@ -43,7 +45,7 @@ public class Database extends SQLiteOpenHelper {
     public Boolean checkemail(String email) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from emails where email = ?", new String[] {email});
-        if (cursor.getCount() > 0)
+        if(cursor.getCount() > 0)
         {
             return true;
         }
@@ -56,7 +58,7 @@ public class Database extends SQLiteOpenHelper {
     public Boolean checkaccount(String email, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from emails where email = ? and password = ?", new String[] {email,password});
-        if (cursor.getCount() > 0)
+        if(cursor.getCount() > 0)
         {
             return true;
         }
