@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Project_B1_test"
         tools:targetApi="31">
         <activity
+            android:name=".ReviewAnswersActivity"
+            android:exported="false" />
+<!--    <activity-->
+<!--            android:name=".LogoutActivity"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".StartTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Test1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -21,9 +39,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartTestActivity"/>
-        <activity android:name=".HomeActivity"/>
-        <activity android:name=".ReviewAnswersActivity"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
 
     </application>
 
