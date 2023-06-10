@@ -7,31 +7,22 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/loginbg"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="App ôn thi tiếng anh đầu ra B1"
-        android:textSize="20sp"
+        android:text="App thi thử Tiếng Anh THPT"
+        android:textSize="30sp"
         android:textAlignment="center"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Xin chào,hãy đăng nhập"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="80dp"
-        android:textSize="16sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="40dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
         <LinearLayout
@@ -45,7 +36,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đăng nhập"
+                android:text="Sign Up"
                 android:textAlignment="center"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -53,36 +44,51 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signinemail"
+                android:id="@+id/signupemail"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
                 android:hint="Email"
-                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawableLeft="@drawable/person_icon"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"
                 />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signinpassword"
+                android:id="@+id/signuppassword"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="mật khẩu"
-                android:drawableLeft="@drawable/baseline_lock_24"
+                android:hint="Password"
+                android:drawableLeft="@drawable/lock_icon"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"
                 />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/confirmpassword"
+                android:background="@drawable/custom_edittext"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Password"
+                android:drawableLeft="@drawable/lock_icon"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black"
+                />
+
             <Button
                 android:layout_width="280dp"
                 android:layout_height="60dp"
-                android:text="Đăng nhập"
-                android:id="@+id/signinbtn"
+                android:text="Sign Up"
+                android:id="@+id/signupbtn"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:layout_marginTop="40dp"
@@ -90,28 +96,6 @@
                 app:cornerRadius="20dp"
 
                 />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/forgotpass"
-                android:textColor="@color/black"
-                android:text="Quên mật khẩu?"
-                android:textSize="14dp"
-                android:layout_gravity="center"
-                android:padding="8dp"
-                android:layout_marginTop="4dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/signupready"
-                android:text="Chưa có tài khoản? Đăng ký"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:padding="8dp"
-                android:textColor="@color/black"
-                android:textSize="15sp"/>
-
 
         </LinearLayout>
 
