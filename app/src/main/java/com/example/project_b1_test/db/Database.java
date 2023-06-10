@@ -29,10 +29,10 @@ public class Database extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put("signupemail",email);
-        values.put("signuppass",password);
+        values.put("signuppassword",password);
 
         long result = MyDB.insert("emails",null, values);
-        if(result == -1)
+        if(result == 0)
         {
             return false;
         }
