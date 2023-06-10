@@ -35,8 +35,6 @@ public class SignupActivity extends AppCompatActivity{
         SignUpButton = findViewById(R.id.signupbtn);
         BackSignIn = findViewById(R.id.backsignin);
 
-        MyDB = new Database(this);
-
         SignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
