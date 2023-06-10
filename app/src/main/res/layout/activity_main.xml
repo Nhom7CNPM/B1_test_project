@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="0dp"
         android:drawablePadding="10dp"
-        android:text="Ôn thi Tiếng Anh đầu ra"
+        android:text="Đề Luyện Thi Tiếng Anh"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="30sp" />

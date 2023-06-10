@@ -26,7 +26,7 @@
         android:text="nội dung:"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
         />
 
 

@@ -48,7 +48,7 @@ public class MeoActivity extends AppCompatActivity {
                 "Mẫu câu cảm ơn/ xin lỗi "
                 ));
         arraymeo.add(new Meo("5.Dạng bài đọc hiểu\n" ,
-                "Đây là dạng bài nằm trong số dạng bài khó và chiếm tỉ trọng lớn trong bài. Cụ thể là 17 câu trong đề thi tiếng Anh THPT Quốc gia. Do đó, đối những sĩ tử chuyên anh và muốn chinh phục thang điểm 9+. Thì chắc chắn, bạn không được sai dạng bài này. Một số dạng câu hỏi thường xuất hiện như sau:\n" +
+                "Đây là dạng bài nằm trong số dạng bài khó và chiếm tỉ trọng lớn trong bài. Cụ thể là 17 câu trong đề thi tiếng Anh. Do đó, đối những sĩ tử chuyên anh và muốn chinh phục thang điểm 9+. Thì chắc chắn, bạn không được sai dạng bài này. Một số dạng câu hỏi thường xuất hiện như sau:\n" +
                 "\n" +
                 "Dạng câu hỏi tìm thông tin chi tiết \n" +
                 "Dạng câu hỏi suy luận, tìm thông tin tổng quát\n" +
