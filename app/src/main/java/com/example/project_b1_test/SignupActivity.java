@@ -1,6 +1,5 @@
 package com.example.project_b1_test;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,24 +8,32 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project_b1_test.db.Database;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class SignupActivity extends AppCompatActivity{
 
-    TextView BackSignIn;
+    DatabaseReference dbr = FirebaseDatabase.getInstance().getReferenceFromUrl("https://project-b1-test-default-rtdb.firebaseio.com/");
+    private FirebaseAuth auth;
+    private TextView BackSignIn;
     private EditText SignUpEmail, SignUpPass, ConfirmPass;
     private Button SignUpButton;
-    Database MyDB;
 
-
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        auth = FirebaseAuth.getInstance();
 
         SignUpEmail = findViewById(R.id.signupemail);
         SignUpPass = findViewById(R.id.signuppassword);
@@ -42,40 +49,38 @@ public class SignupActivity extends AppCompatActivity{
                 String pass = SignUpPass.getText().toString();
                 String cpass = ConfirmPass.getText().toString();
 
-                if(email.equals("") || pass.equals("") || cpass.equals(""))
+                if(email.isEmpty() || pass.isEmpty() || cpass.isEmpty())
                 {
-                    Toast.makeText(SignupActivity.this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
-                else
+                else if(pass.equals(cpass))
                 {
-                    if(pass.equals(cpass))
-                    {
-                        // Kiểm tra email đăng kí đã có trong DB chưa
-                        Boolean emailcheck = MyDB.checkemail(email);
-                        if(emailcheck == false)
-                        {
-                            //Nếu chưa thì nhập tài khoản vào DB
-                            Boolean regresult = MyDB.insertData(email,pass);
-                            if(regresult == true)
+                    dbr.child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            // Kiểm tra tài khoản đã tồn tại
+                            if(snapshot.hasChild(email))
                             {
-                                Toast.makeText(SignupActivity.this, "Đăng ký tài khoản thành công!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                startActivity(intent);
+                                Toast.makeText(SignupActivity.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
-                                Toast.makeText(SignupActivity.this, "Đăng kí tài khoản thất bại!", Toast.LENGTH_SHORT).show();
+                                dbr.child("email").child(email).child("pass").setValue(pass);
+
+                                Toast.makeText(SignupActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                                finish();
                             }
                         }
-                        else
-                        {
-                            Toast.makeText(SignupActivity.this, "Tài khoản này đã tồn tại!", Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
                         }
-                    }
-                    else
-                    {
-                        Toast.makeText(SignupActivity.this, "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
-                    }
+                    });
+                }
+                else
+                {
+                    Toast.makeText(SignupActivity.this, "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -83,8 +88,7 @@ public class SignupActivity extends AppCompatActivity{
         BackSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
             }
         });
     }
