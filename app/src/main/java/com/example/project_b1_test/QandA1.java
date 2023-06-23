@@ -1,4 +1,4 @@
-package com.example.project_b1_test.db;
+package com.example.project_b1_test;
 
 public class QandA1 {
 
