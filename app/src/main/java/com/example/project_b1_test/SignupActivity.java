@@ -9,85 +9,60 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+public class SignupActivity extends AppCompatActivity {
 
 
-public class SignupActivity extends AppCompatActivity{
-
-    DatabaseReference dbr = FirebaseDatabase.getInstance().getReferenceFromUrl("https://project-b1-test-default-rtdb.firebaseio.com/");
     private FirebaseAuth auth;
-    private TextView BackSignIn;
-    private EditText SignUpEmail, SignUpPass, ConfirmPass;
-    private Button SignUpButton;
+    private EditText signupEmail, signupPassword;
+    private Button signupButton;
+    private TextView loginReaddy;
+
+
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
         auth = FirebaseAuth.getInstance();
-
-        SignUpEmail = findViewById(R.id.signupemail);
-        SignUpPass = findViewById(R.id.signuppassword);
-        ConfirmPass = findViewById(R.id.confirmpassword);
-
-        SignUpButton = findViewById(R.id.signupbtn);
-        BackSignIn = findViewById(R.id.backsignin);
-
-        SignUpButton.setOnClickListener(new View.OnClickListener() {
+        signupEmail = (EditText) findViewById(R.id.signupemail);
+        signupPassword = (EditText) findViewById(R.id.signuppassword);
+        signupButton = (Button) findViewById((R.id.signupbtn));
+        loginReaddy = (TextView) findViewById(R.id.backsignin) ;
+        signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String email = SignUpEmail.getText().toString();
-                String pass = SignUpPass.getText().toString();
-                String cpass = ConfirmPass.getText().toString();
-
-                if(email.isEmpty() || pass.isEmpty() || cpass.isEmpty())
-                {
-                    Toast.makeText(SignupActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                String User = signupEmail.getText().toString().trim();
+                String Password = signupPassword.getText().toString().trim();
+                if (User.isEmpty()) {
+                    signupEmail.setError("Email không thể để trống");
                 }
-                else if(pass.equals(cpass))
-                {
-                    dbr.child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+                if (Password.isEmpty()) {
+                    signupPassword.setError("Chưa nhập mật khẩu");
+                } else {
+                    auth.createUserWithEmailAndPassword(User, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            // Kiểm tra tài khoản đã tồn tại
-                            if(snapshot.hasChild(email))
-                            {
-                                Toast.makeText(SignupActivity.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-                                dbr.child("email").child(email).child("pass").setValue(pass);
-
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
                                 Toast.makeText(SignupActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                                finish();
+                            } else {
+                                Toast.makeText(SignupActivity.this, "Đăng ký thất bại" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
                 }
-                else
-                {
-                    Toast.makeText(SignupActivity.this, "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
-                }
             }
         });
-
-        BackSignIn.setOnClickListener(new View.OnClickListener() {
+        loginReaddy.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 startActivity(new Intent(SignupActivity.this, LoginActivity.class));
             }
         });
