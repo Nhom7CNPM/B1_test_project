@@ -30,16 +30,17 @@
             android:name=".Test1Activity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
-            android:exported="true"></activity>
+            android:name=".SignUpActivity"
+            android:exported="true"/>
         <activity
             android:name=".MeoActivity"
-            android:exported="false"
-            ></activity>
+            android:exported="false"/>
         <activity
             android:name=".CauTrucActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -49,9 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"></activity>
 
     </application>
 
