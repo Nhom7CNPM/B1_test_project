@@ -31,25 +31,28 @@
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
-            android:exported="true"/>
+            android:exported="true"></activity>
         <activity
             android:name=".MeoActivity"
-            android:exported="false"/>
+            android:exported="false"
+            ></activity>
         <activity
             android:name=".CauTrucActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
-        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
+
     </application>
 
 </manifest>
