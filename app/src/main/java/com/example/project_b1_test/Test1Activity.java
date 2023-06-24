@@ -5,24 +5,17 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import com.example.project_b1_test.db.QandA1;
-
-    public class Test1Activity extends AppCompatActivity implements View.OnClickListener {
+public class Test1Activity extends AppCompatActivity implements View.OnClickListener {
         TextView totalQuestiontextview;
         TextView questiontextview;
         Button ansA,ansB,ansC,ansD;
@@ -95,11 +88,11 @@ import com.example.project_b1_test.db.QandA1;
             finishQuiz();
             return;
         }
-        questiontextview.setText("Câu " + (curruentQuestionIndex + 1) + ": " + Answerthequestion.question[curruentQuestionIndex]);
-        ansA.setText(Answerthequestion.choise[curruentQuestionIndex][0]);
-        ansB.setText(Answerthequestion.choise[curruentQuestionIndex][1]);
-        ansC.setText(Answerthequestion.choise[curruentQuestionIndex][2]);
-        ansD.setText(Answerthequestion.choise[curruentQuestionIndex][3]);
+        questiontextview.setText("Câu " + (curruentQuestionIndex + 1) + ": " + QandA1.Question[curruentQuestionIndex]);
+        ansA.setText(QandA1.Answer[curruentQuestionIndex][0]);
+        ansB.setText(QandA1.Answer[curruentQuestionIndex][1]);
+        ansC.setText(QandA1.Answer[curruentQuestionIndex][2]);
+        ansD.setText(QandA1.Answer[curruentQuestionIndex][3]);
     }
     void finishQuiz() {
         String passstatus = "";
@@ -128,14 +121,14 @@ import com.example.project_b1_test.db.QandA1;
         ArrayList<String> answersList = new ArrayList<>();
         ArrayList<String> correctAnswersList = new ArrayList<>();
 
-        for (int i = 0; i < Answerthequestion.question.length; i++) {
+        for (int i = 0; i < QandA1.Question.length; i++) {
             String selectedAnswer = "";
             if (i < selectedAnswersList.size()) {
                 selectedAnswer = selectedAnswersList.get(i);
             }
-            String correctAnswer = Answerthequestion.correctAnswer[i];
+            String correctAnswer = QandA1.correctAnswer[i];
 
-            answersList.add("Câu hỏi " + (i + 1) + ": \n" + Answerthequestion.question[i] +
+            answersList.add("Câu hỏi " + (i + 1) + ": \n" + QandA1.Question[i] +
                     "\nĐáp án bạn chọn: " + selectedAnswer +
                     "\nĐáp án đúng: " + correctAnswer + "\n");
 
@@ -144,7 +137,7 @@ import com.example.project_b1_test.db.QandA1;
 
         // Chuyển sang màn hình hiển thị câu hỏi và câu trả lời đã chọn
         // Chuyển sang màn hình hiển thị câu hỏi và câu trả lời đã chọn
-        Intent intent = new Intent(Test1Activity.this, ReviewAnswersActivity.class);
+        Intent intent = new Intent(Test1Activity.this, QandA1.class);
         intent.putStringArrayListExtra("selectedAnswersList", selectedAnswersList);
         intent.putStringArrayListExtra("correctAnswersList", correctAnswersList);
         intent.putStringArrayListExtra("answersList", answersList);
