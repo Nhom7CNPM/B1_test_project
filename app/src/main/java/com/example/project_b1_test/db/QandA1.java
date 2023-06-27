@@ -1,8 +1,6 @@
-package com.example.project_b1_test.db;
+package com.example.project_b1_test;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class QandA1 extends AppCompatActivity {
+public class QandA1 {
 
     public static String Question[] = {
         "______ raiding for camels was a significant part of Bedouin life has been documented in Wilfed Thesiger’s Arabian Sands.",
@@ -28,8 +26,8 @@ public class QandA1 extends AppCompatActivity {
         "The fourth year sociology class was a (homogeneous) group of university students",
         "The detective’s (resourcefulness) helped him solve the mystery",
         "Stephen Foster was one of America's most popular and (productive) song writers, composing more than two hundred songs in his lifetime.",
-//        "Few scientific breakthroughs are discovered merely by (coincidence)",
-//        "According to Freud, dreams can be interpreted as the (fulfilment) of wishes"
+        "Few scientific breakthroughs are discovered merely by (coincidence)",
+        "According to Freud, dreams can be interpreted as the (fulfilment) of wishes"
     };
 
     public static String Answer[][] = {
@@ -56,8 +54,8 @@ public class QandA1 extends AppCompatActivity {
             {"A. uniform","B. dreary","C. unrelated","D. distinguishable"},
             {" A. assistance","B. skill","C. family","D. money"},
             {"A. prolific","B. gifted","C. industrious","D. renowned"},
-//            {"A. talent","B. laymen","C. chance","D. imagination"},
-//            {"A. performance","B. completion","C. attainment","D. conclusion"}
+            {"A. talent","B. laymen","C. chance","D. imagination"},
+            {"A. performance","B. completion","C. attainment","D. conclusion"}
     };
 
     public static String correctAnswer[] = {
@@ -84,7 +82,7 @@ public class QandA1 extends AppCompatActivity {
             "A. uniform",
             "B. skill",
             "A. prolific",
-//            "C. chance",
-//            "B. completion"
+            "C. chance",
+            "B. completion"
     };
 }

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btnThiThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(MainActivity.this,HomeActivity.class));
+                startActivity( new Intent(MainActivity.this,StartTestActivity.class));
                 finish();
             }
         });
