@@ -11,12 +11,15 @@ import android.widget.Toast;
 import com.example.project_b1_test.db.DB_Login;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity{
     private TextView BackSignIn;
     private EditText SignUpEmail, SignUpPass, ConfirmPass;
     private Button SignUpButton;
     private DB_Login DB;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,38 +40,55 @@ public class SignUpActivity extends AppCompatActivity{
                 String email = SignUpEmail.getText().toString();
                 String password = SignUpPass.getText().toString();
                 String cpassword = ConfirmPass.getText().toString();
+                String emailPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+                Pattern pattern = Pattern.compile(emailPattern);
+                Matcher matcher = pattern.matcher(email);
 
                 if(email.equals("")||password.equals("")||cpassword.equals(""))
                     Toast.makeText(SignUpActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else
                 {
-                    if(password.equals(cpassword))
+                    if (matcher.matches())
                     {
-                        Boolean checkuser = DB.checkusername(email);
-                        if(!checkuser)
+                        if(password.equals(cpassword))
                         {
-                            Boolean insert = DB.insertData(email, password);
-                            if(insert)
+                            Boolean checkuser = DB.checkusername(email);
+                            if(!checkuser)
                             {
-                                Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                startActivity(intent);
+                                Boolean insert = DB.insertData(email, password);
+                                if(insert)
+                                {
+                                    Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                    startActivity(intent);
+                                }
+                                else
+                                {
+                                    Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                }
                             }
                             else
                             {
-                                Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "User already exists! please sign in", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else
                         {
-                            Toast.makeText(SignUpActivity.this, "User already exists! please sign in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "Passwords not matching", Toast.LENGTH_SHORT).show();
                         }
-                    }
+                        }
                     else
                     {
-                        Toast.makeText(SignUpActivity.this, "Passwords not matching", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, "Please enter the correct email ", Toast.LENGTH_SHORT).show();
+
                     }
+
+
+
                 }
+
+
+
             }
         });
         BackSignIn.setOnClickListener(new View.OnClickListener() {

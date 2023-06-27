@@ -13,15 +13,17 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project_b1_test.db.QandA1;
+
 import java.util.ArrayList;
 
 public class Test1Activity extends AppCompatActivity implements View.OnClickListener {
-        TextView totalQuestiontextview;
-        TextView questiontextview;
-        Button ansA,ansB,ansC,ansD;
-        Button submit;
-        int score = 0;
-        int totalquestion = QandA1.Question.length;
+    TextView totalQuestiontextview;
+    TextView questiontextview;
+    Button ansA,ansB,ansC,ansD;
+    Button submit;
+    int score = 0;
+    int totalquestion = QandA1.Question.length;
     int curruentQuestionIndex = 0;
     String selectedAnswer = "";
     private CountDownTimer countDownTimer;
@@ -68,7 +70,7 @@ public class Test1Activity extends AppCompatActivity implements View.OnClickList
 
         Button clickedButton = (Button) view;
         if(clickedButton.getId()==R.id.submit){
-            if(selectedAnswer.equals(Answerthequestion.correctAnswer[curruentQuestionIndex])) {
+            if(selectedAnswer.equals(QandA1.correctAnswer[curruentQuestionIndex])) {
                 score += 4;}
             curruentQuestionIndex++;
             loadNewQuestion();
