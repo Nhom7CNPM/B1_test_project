@@ -103,48 +103,9 @@
 
     </LinearLayout>
 
-
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <!-- Các phần tử khác trong FrameLayout -->
-
-        <!-- LinearLayout được đặt ở cuối trang -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal">
-
-            <!-- Button ở bên trái -->
-            <Button
-                android:layout_width="205dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:text="Trang chủ"
-                android:id="@+id/homebtn"
-                android:textColor="@color/white"
-                android:padding="15dp"
-                android:textSize="15sp"/>
-
-            <!-- Các phần tử trong LinearLayout -->
-
-            <!-- Button ở bên phải -->
-            <Button
-                android:layout_width="205dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:text="Tài khoản"
-                android:id="@+id/myaccountbtn"
-                android:textColor="@color/white"
-                android:padding="15dp"
-                android:textSize="15sp"
-                />
-
-        </LinearLayout>
 
     </FrameLayout>
 

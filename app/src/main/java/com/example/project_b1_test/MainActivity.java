@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        homebtn=(Button) findViewById(R.id.homebtn);
-        btnmyaccount=(Button) findViewById(R.id.myaccountbtn);
         btnThiThu = (ImageButton)  findViewById(R.id.btnThiThu);
         btnCauTruc=(ImageButton)findViewById(R.id.btnCauTruc);
         btnMeo=(ImageButton)findViewById(R.id.btnMeo);
@@ -33,12 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btnmyaccount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this,LogoutActivity.class));
-//            }
-//        });
+
         btnCauTruc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -2,7 +2,10 @@ package com.example.project_b1_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ public class CauTrucActivity extends AppCompatActivity {
     ListView LvCauTruc;
     ArrayList<Cautruc> arraycautruc;
     CautrucAdapter CautrucAdapter;
+    private ImageView backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,11 +21,19 @@ public class CauTrucActivity extends AppCompatActivity {
         Anhxa3();
         CautrucAdapter =new CautrucAdapter(this,R.layout.activity_meo,arraycautruc);
         LvCauTruc.setAdapter(CautrucAdapter);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CauTrucActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void Anhxa3(){
         LvCauTruc =(ListView) findViewById(R.id.listviewmeo);
         arraycautruc=new ArrayList<>();
+        backBtn=findViewById(R.id.backbtn);
         arraycautruc.add(new Cautruc("1.Dạng bài ngữ âm/ trọng âm:\n",
                 "Trong cấu trúc đề thi tiếng Anh, dạng bài ngữ âm thường xuất hiện đầu tiên. Đối với dạng bài này, các bạn học sinh cần chọn đáp án có phần gạch chân được phát âm khác so với các đáp án còn lại.\n" +
                         "\n" +

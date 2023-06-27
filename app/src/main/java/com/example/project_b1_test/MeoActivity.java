@@ -2,7 +2,10 @@ package com.example.project_b1_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -11,6 +14,7 @@ public class MeoActivity extends AppCompatActivity {
     ListView lvMeo;
     ArrayList<Meo> arraymeo;
     MeoAdapter MeoAdapter;
+    private ImageView backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,10 +22,19 @@ public class MeoActivity extends AppCompatActivity {
         Anhxa2();
         MeoAdapter =new MeoAdapter(this,R.layout.activity_meo,arraymeo);
         lvMeo.setAdapter(MeoAdapter);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MeoActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
     private void Anhxa2 (){
         lvMeo =(ListView) findViewById(R.id.listviewmeo);
         arraymeo=new ArrayList<>();
+        backBtn = findViewById(R.id.backbtn);
         arraymeo.add(new Meo("1.Dạng bài ngữ âm/ trọng âm:\n",
                 "- Trọng âm thường rơi vào các đuôi dễ nhận biết như: ion, er, al, ity, ly, ist,….\n" +
                 "- Trọng âm rơi vào âm tiết thứ hai nếu là danh từ.\n" +

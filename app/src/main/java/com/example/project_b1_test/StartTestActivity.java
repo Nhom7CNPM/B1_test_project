@@ -48,6 +48,7 @@ public class StartTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartTestActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -161,7 +161,6 @@ public class TestActivity extends AppCompatActivity {
                 rb4.setTextColor(Color.GREEN);
                 break;
         }
-
         if (questionCounter < questionSize){
             submit.setText("Câu tiếp");
         }

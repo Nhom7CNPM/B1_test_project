@@ -7,7 +7,6 @@
     android:layout_centerHorizontal="true"
     tools:context=".MeoActivity">
     <TextView
-
         android:textSize="22sp"
         android:id="@+id/texttenmeo"
         android:layout_marginTop="10dp"

@@ -1,13 +1,17 @@
 package com.example.project_b1_test;
 
+import android.widget.ImageView;
+
 public class Meo    {
     public String Tenmeo,Noidung;
+
 
     public Meo(String tenmeo, String noidung) {
         this.Tenmeo = tenmeo;
         this.Noidung = noidung;
 
     }
+
 
     public String getTenmeo() {
         return Tenmeo;
