@@ -92,7 +92,7 @@ public class TestActivity extends AppCompatActivity {
             Total_question.setText("Câu hỏi: " + questionCounter +"/"+questionSize);
 
             answered = false;
-            timeLeftInMillis = 30000;
+            timeLeftInMillis = 60000;
             startCountDown();
             // Đặt lại trạng thái ban đầu cho các nút RadioButton
             rb1.setChecked(false);
