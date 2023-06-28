@@ -60,11 +60,12 @@ public class DB_Login extends SQLiteOpenHelper {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put("password", password);
-        long result = MyDB.update("emails", contentValues,"email=?",new String[]{email});
+        long result = MyDB.update("emails", contentValues, "email = ? ", new String[]{email});
         if(result == -1)
             return false;
         else
             return true;
     }
+
 }
 

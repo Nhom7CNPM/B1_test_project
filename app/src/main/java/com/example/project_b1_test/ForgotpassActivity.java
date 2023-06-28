@@ -12,7 +12,7 @@ import com.example.project_b1_test.db.DB_Login;
 
 public class ForgotpassActivity extends AppCompatActivity  {
     EditText emailBox;
-    Button resetBtn;
+    Button resetBtn, cancelBtn;
     DB_Login DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,8 @@ public class ForgotpassActivity extends AppCompatActivity  {
 
         emailBox= findViewById(R.id.emailBox);
         resetBtn= findViewById(R.id.resetBtn);
+        cancelBtn=findViewById(R.id.cancel_btn);
+
         DB=new DB_Login(this);
 
         resetBtn.setOnClickListener(new View.OnClickListener() {
@@ -30,14 +32,21 @@ public class ForgotpassActivity extends AppCompatActivity  {
                 Boolean checkmail= DB.checkusername(email);
                 if(checkmail==true)
                 {
-                    startActivity(new Intent(ForgotpassActivity.this, ResetActivity.class));
-                    getIntent().putExtra("Email",email);
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), ResetActivity.class);
+                    intent.putExtra("email",email);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(ForgotpassActivity.this, "Email does not exists", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ForgotpassActivity.this, LoginActivity.class));
             }
         });
     }

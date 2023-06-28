@@ -27,31 +27,32 @@ public class ResetActivity extends AppCompatActivity {
         password_reset= findViewById(R.id.password_reset);
         RePassword_reset= findViewById(R.id.RePassword_reset);
         confirm_button= findViewById(R.id.confirm_button);
-        DB =new DB_Login(this);
+        DB = new DB_Login(this);
 
         Intent intent = getIntent();
-        reset_text.setText(intent.getStringExtra("Email"));
+        String text = intent.getStringExtra("email");
+        reset_text.setText(text);
 
         confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Text = reset_text.getText().toString();
+                String text = reset_text.getText().toString();
                 String pass = password_reset.getText().toString();
                 String repass= RePassword_reset.getText().toString();
-                if(pass.equals(repass)){
 
-                    Boolean check_pass_update=DB.updatepassword(Text,pass) ;
+                if(pass.equals(repass)){
+                    Boolean check_pass_update=DB.updatepassword(text,pass);
                     if(check_pass_update==true){
                         startActivity(new Intent(ResetActivity.this, LoginActivity.class));
-                        Toast.makeText(ResetActivity.this,"password update successfully ",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ResetActivity.this,"Password update successfully",Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        Toast.makeText(ResetActivity.this,"password update fail ",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ResetActivity.this,"Password update fail",Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 else {
-                    Toast.makeText(ResetActivity.this,"password not matched  ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResetActivity.this,"Password not matched",Toast.LENGTH_SHORT).show();
                 }
             }
 
