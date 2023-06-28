@@ -14,13 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_B1_test"
         tools:targetApi="31">
-        <activity
-            android:name=".ResetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ForgotpassActivity"
-            android:exported="false"
-            />
+        <activity android:name="com.example.project_b1_test.db.QandA1" />
         <activity
             android:name=".TestActivity"
             android:exported="false" />

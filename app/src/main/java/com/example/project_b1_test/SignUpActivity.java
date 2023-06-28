@@ -80,15 +80,8 @@ public class SignUpActivity extends AppCompatActivity{
                     else
                     {
                         Toast.makeText(SignUpActivity.this, "Please enter the correct email ", Toast.LENGTH_SHORT).show();
-
                     }
-
-
-
                 }
-
-
-
             }
         });
         BackSignIn.setOnClickListener(new View.OnClickListener() {
