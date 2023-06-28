@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText LoginEmail,LoginPassword;
     private Button LoginButton;
-    private TextView SignUpReady;
+    private TextView SignUpReady,ForgotPass;
     DB_Login DB;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginButton = findViewById(R.id.loginbtn);
         SignUpReady = findViewById(R.id.signupready);
+        ForgotPass= findViewById(R.id.forgotpass);
         DB = new DB_Login(this);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -44,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkuserpass)
                     {
                         Toast.makeText(LoginActivity.this, "Sign in successfull", Toast.LENGTH_SHORT).show();
-                        Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     }
                     else
                     {
@@ -58,6 +59,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+                finish();
+            }
+        });
+        ForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgotpassActivity.class));
                 finish();
             }
         });

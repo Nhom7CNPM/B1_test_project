@@ -64,22 +64,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailBox"
             app:layout_constraintBottom_toBottomOf="@+id/activityBox"
-            app:layout_constraintEnd_toStartOf="@+id/Resetbtn"
+            app:layout_constraintEnd_toStartOf="@+id/resetBtn"
             />
+
         <Button
+            android:id="@+id/resetBtn"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:id="@+id/Resetbtn"
-            android:text="Cập nhật"
-            android:backgroundTint="#EFC239"
             android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="40dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#EFC239"
+            android:text="Cập nhật"
             android:textSize="14sp"
             app:cornerRadius="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/activityBox"
-            app:layout_constraintStart_toEndOf="@+id/cancel_btn"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cancel_btn" />
         "
 
     </androidx.constraintlayout.widget.ConstraintLayout>
